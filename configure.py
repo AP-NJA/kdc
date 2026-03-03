@@ -252,6 +252,13 @@ cflags_rel = [
     "-sdata2 0",
 ]
 
+cflags_hel = [
+    *cflags_base,
+    "-i src/hel/",
+    "-inline noauto",
+    "-O3"
+]
+
 cflags_donut = [
     *cflags_base,
     "-i src/donut/",
@@ -307,6 +314,15 @@ config.libs = [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],
+    },
+    {
+        "lib": "hel/geo",
+        "mw_version": config.linker_version,
+        "cflags": cflags_hel,
+        "progress_category": "hel",
+        "objects": [
+            Object(NonMatching, "hel/geo/Rect.cpp"),
+        ]
     },
     {
         "lib": "scn/step/hero",
