@@ -212,7 +212,7 @@ cflags_base = [
     # "-multibyte",  # For Wii compilers, replace with `-enc SJIS`
     "-enc SJIS",
     "-i src/",
-    "-i src/MSL/",
+    "-i src/MSL/MSL_C/",
     "-i src/revolution/",
     "-i src/nw4r/",
     f"-i build/{config.version}/src",
