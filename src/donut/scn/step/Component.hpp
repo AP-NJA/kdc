@@ -10,76 +10,204 @@
 #include "scn/step/debug/GeneralDrawer.hpp"
 #include "scn/step/debug/ObjInfoRepos.hpp"
 
+// todo: move these to their own headers
+
+namespace g3d {
+    class ResFileRepository { };
+}
+
+namespace scn { namespace step {
+    namespace core {
+        class SceneChanger { };
+        class G3DRootSet { };
+        class AreaLightManager { };
+        class MintManager { };
+        class PermSoundSE { };
+        class AreaOperation { };
+        class BGMController { };
+        class PauseTrigger { };
+        class PermEffect { };
+        class PreLoadReq { };
+        class PauseManager { };
+        class MoveLimit { };
+    }
+
+    namespace effect {
+        class Manager { };
+    }
+
+    namespace ostop {
+        class Manager { };
+    }
+
+    namespace spstop {
+        class Manager { };
+    }
+
+    namespace sfx {
+        class BGFade { };
+        class ScreenFade { };
+        class Wipe { };
+        class CinemaScope { };
+        class AbilityGetFade { };
+        class SuperFade { };
+        class SuperBackPicture { };
+        class Manager { };
+        class ShadowRoot { };
+        class DarknessRoot { };
+        class DarknessAdjust { };
+    }
+
+    namespace info {
+        class Manager { };
+    }
+
+    namespace camera {
+        class CameraController { };
+        class BgCamera { };
+        class CameraAccessor { };
+        class DebugCamera { };
+        class MainCamera { };
+        class InvidiCameraManager { };
+    }
+
+    namespace ocoll {
+        class Manager { };
+    }
+
+    namespace vacuum {
+        class Manager { };
+    }
+
+    namespace nururi {
+        class Manager { };
+    }
+
+    namespace map {
+        class MemManager { };
+        class LandManager { };
+    }
+
+    namespace bg {
+        class Manager { };
+        class DecorationManager { };
+    }
+
+    namespace gimmick {
+        class Manager { };
+    }
+
+    namespace ogen {
+        class Manager { };
+    }
+
+    namespace weapon {
+        class Manager { };
+    }
+
+    namespace enemy {
+        class Manager { };
+    }
+
+    namespace boss {
+        class Manager { };
+    }
+
+    namespace ghost {
+        class Manager { };
+    }
+
+    namespace challenge {
+        class Manager { };
+    }
+
+    namespace debug {
+        class ObjPlacement { };
+    }
+
+    namespace hid {
+        class RumbleManager { };
+    }
+
+    namespace hero {
+        class Manager { };
+    }
+
+    namespace item {
+        class Manager { };
+    }
+}}
+
 using hel::common::ScopedPtr;
 
 namespace scn { namespace step {
 
 class Component {
-private:
-    typedef int placeholder_t;
 public:
+    ~Component();
+
     debug::GeneralDrawer* debugGeneralDrawer();
     debug::ObjInfoRepos* debugObjInfoRepos();
 private:
     /* 0x00 */ ScopedPtr<Context> mContext;
     /* 0x04 */ ScopedPtr<map::DataFile> mDataFile;
     /* 0x08 */ ScopedPtr<core::SphereAccessor> mSphereAccessor;
-    /* 0x0C */ ScopedPtr<placeholder_t> mSceneChanger;
-    /* 0x10 */ ScopedPtr<placeholder_t> mResFileRepository;
-    /* 0x14 */ ScopedPtr<placeholder_t> mG3DRootSet;
-    /* 0x18 */ ScopedPtr<placeholder_t> mEffectManager;
-    /* 0x1C */ ScopedPtr<placeholder_t> mAreaLightManager;
-    /* 0x20 */ ScopedPtr<placeholder_t> mMintManager;
-    /* 0x24 */ ScopedPtr<placeholder_t> mRumbleManager;
-    /* 0x28 */ ScopedPtr<placeholder_t> mPermSoundSE;
-    /* 0x2C */ ScopedPtr<placeholder_t> mAreaOperation;
-    /* 0x30 */ ScopedPtr<placeholder_t> mBGMController;
-    /* 0x34 */ ScopedPtr<placeholder_t> mPauseTrigger;
-    /* 0x38 */ ScopedPtr<placeholder_t> mOstopManager;
-    /* 0x3C */ ScopedPtr<placeholder_t> mSuperStopManager;
-    /* 0x40 */ ScopedPtr<placeholder_t> mPermEffect;
-    /* 0x44 */ ScopedPtr<placeholder_t> mPreLoadReq;
-    /* 0x48 */ ScopedPtr<placeholder_t> mBgFadeWithoutLand;
-    /* 0x4C */ ScopedPtr<placeholder_t> mBgFade;
-    /* 0x50 */ ScopedPtr<placeholder_t> mBgFadeOverGimmick;
-    /* 0x54 */ ScopedPtr<placeholder_t> mFgFade;
-    /* 0x58 */ ScopedPtr<placeholder_t> mScreenFade;
-    /* 0x5C */ ScopedPtr<placeholder_t> mWip;
-    /* 0x60 */ ScopedPtr<placeholder_t> mCinemaScope;
-    /* 0x64 */ ScopedPtr<placeholder_t> mAbilityGetFade;
-    /* 0x68 */ ScopedPtr<placeholder_t> mSuperFade;
-    /* 0x6C */ ScopedPtr<placeholder_t> mSuperBackPicture;
-    /* 0x70 */ ScopedPtr<placeholder_t> mSfxManager;
-    /* 0x74 */ ScopedPtr<placeholder_t> mShadowRoot;
-    /* 0x78 */ ScopedPtr<placeholder_t> mDarknessRoot;
-    /* 0x7C */ ScopedPtr<placeholder_t> mDarknessAdjust;
-    /* 0x80 */ ScopedPtr<placeholder_t> mInfoManager;
-    /* 0x84 */ ScopedPtr<placeholder_t> mPauseManager;
-    /* 0x88 */ ScopedPtr<placeholder_t> mCameraController;
-    /* 0x8C */ ScopedPtr<placeholder_t> mBgCamera;
-    /* 0x90 */ ScopedPtr<placeholder_t> mCameraAccessor;
-    /* 0x94 */ ScopedPtr<placeholder_t> mDebugCamera;
-    /* 0x98 */ ScopedPtr<placeholder_t> mMainCamera;
-    /* 0x9C */ ScopedPtr<placeholder_t> mIndiviCameraManager;
-    /* 0xA0 */ ScopedPtr<placeholder_t> mObjCollManager;
-    /* 0xA4 */ ScopedPtr<placeholder_t> mVacuumManager;
-    /* 0xA8 */ ScopedPtr<placeholder_t> mNururiManager;
-    /* 0xAC */ ScopedPtr<placeholder_t> mMapMemManager;
-    /* 0xB0 */ ScopedPtr<placeholder_t> mMapDecorationManager;
-    /* 0xB4 */ ScopedPtr<placeholder_t> mMapLandManager;
-    /* 0xB8 */ ScopedPtr<placeholder_t> mGimmickManager;
-    /* 0xBC */ ScopedPtr<placeholder_t> mMoveLimit;
-    /* 0xC0 */ ScopedPtr<placeholder_t> mObjGenManager;
-    /* 0xC4 */ ScopedPtr<placeholder_t> mWeaponManager;
-    /* 0xC8 */ ScopedPtr<placeholder_t> mHeroManager;
-    /* 0xCC */ ScopedPtr<placeholder_t> mItemManager;
-    /* 0xD0 */ ScopedPtr<placeholder_t> mEnemyManager;
-    /* 0xD4 */ ScopedPtr<placeholder_t> mBossManager;
-    /* 0xD8 */ ScopedPtr<placeholder_t> mGhostManager;
-    /* 0xDC */ ScopedPtr<placeholder_t> mChallengeManager;
+    /* 0x0C */ ScopedPtr<core::SceneChanger> mSceneChanger;
+    /* 0x10 */ ScopedPtr<g3d::ResFileRepository> mResFileRepository;
+    /* 0x14 */ ScopedPtr<core::G3DRootSet> mG3DRootSet;
+    /* 0x18 */ ScopedPtr<effect::Manager> mEffectManager;
+    /* 0x1C */ ScopedPtr<core::AreaLightManager> mAreaLightManager;
+    /* 0x20 */ ScopedPtr<core::MintManager> mMintManager;
+    /* 0x24 */ ScopedPtr<hid::RumbleManager> mRumbleManager;
+    /* 0x28 */ ScopedPtr<core::PermSoundSE> mPermSoundSE;
+    /* 0x2C */ ScopedPtr<core::AreaOperation> mAreaOperation;
+    /* 0x30 */ ScopedPtr<core::BGMController> mBGMController;
+    /* 0x34 */ ScopedPtr<core::PauseTrigger> mPauseTrigger;
+    /* 0x38 */ ScopedPtr<ostop::Manager> mOstopManager;
+    /* 0x3C */ ScopedPtr<spstop::Manager> mSuperStopManager;
+    /* 0x40 */ ScopedPtr<core::PermEffect> mPermEffect;
+    /* 0x44 */ ScopedPtr<core::PreLoadReq> mPreLoadReq;
+    /* 0x48 */ ScopedPtr<sfx::BGFade> mBgFadeWithoutLand;
+    /* 0x4C */ ScopedPtr<sfx::BGFade> mBgFade;
+    /* 0x50 */ ScopedPtr<sfx::BGFade> mBgFadeOverGimmick;
+    /* 0x54 */ ScopedPtr<sfx::BGFade> mFgFade;
+    /* 0x58 */ ScopedPtr<sfx::ScreenFade> mScreenFade;
+    /* 0x5C */ ScopedPtr<sfx::Wipe> mWipe;
+    /* 0x60 */ ScopedPtr<sfx::CinemaScope> mCinemaScope;
+    /* 0x64 */ ScopedPtr<sfx::AbilityGetFade> mAbilityGetFade;
+    /* 0x68 */ ScopedPtr<sfx::SuperFade> mSuperFade;
+    /* 0x6C */ ScopedPtr<sfx::SuperBackPicture> mSuperBackPicture;
+    /* 0x70 */ ScopedPtr<sfx::Manager> mSfxManager;
+    /* 0x74 */ ScopedPtr<sfx::ShadowRoot> mShadowRoot;
+    /* 0x78 */ ScopedPtr<sfx::DarknessRoot> mDarknessRoot;
+    /* 0x7C */ ScopedPtr<sfx::DarknessAdjust> mDarknessAdjust;
+    /* 0x80 */ ScopedPtr<info::Manager> mInfoManager;
+    /* 0x84 */ ScopedPtr<core::PauseManager> mPauseManager;
+    /* 0x88 */ ScopedPtr<camera::CameraController> mCameraController;
+    /* 0x8C */ ScopedPtr<camera::BgCamera> mBgCamera;
+    /* 0x90 */ ScopedPtr<camera::CameraAccessor> mCameraAccessor;
+    /* 0x94 */ ScopedPtr<camera::DebugCamera> mDebugCamera;
+    /* 0x98 */ ScopedPtr<camera::MainCamera> mMainCamera;
+    /* 0x9C */ ScopedPtr<camera::InvidiCameraManager> mIndiviCameraManager;
+    /* 0xA0 */ ScopedPtr<ocoll::Manager> mObjCollManager;
+    /* 0xA4 */ ScopedPtr<vacuum::Manager> mVacuumManager;
+    /* 0xA8 */ ScopedPtr<nururi::Manager> mNururiManager;
+    /* 0xAC */ ScopedPtr<map::MemManager> mMapMemManager;
+    /* 0xB0 */ ScopedPtr<bg::DecorationManager> mMapDecorationManager;
+    /* 0xB4 */ ScopedPtr<map::LandManager> mMapLandManager;
+    /* 0xB8 */ ScopedPtr<gimmick::Manager> mGimmickManager;
+    /* 0xBC */ ScopedPtr<core::MoveLimit> mMoveLimit;
+    /* 0xC0 */ ScopedPtr<ogen::Manager> mObjGenManager;
+    /* 0xC4 */ ScopedPtr<weapon::Manager> mWeaponManager;
+    /* 0xC8 */ ScopedPtr<hero::Manager> mHeroManager;
+    /* 0xCC */ ScopedPtr<item::Manager> mItemManager;
+    /* 0xD0 */ ScopedPtr<enemy::Manager> mEnemyManager;
+    /* 0xD4 */ ScopedPtr<boss::Manager> mBossManager;
+    /* 0xD8 */ ScopedPtr<ghost::Manager> mGhostManager;
+    /* 0xDC */ ScopedPtr<challenge::Manager> mChallengeManager;
     /* 0xE0 */ ScopedPtr<debug::GeneralDrawer> mDebugGeneralDrawer;
     /* 0xE4 */ ScopedPtr<debug::ObjInfoRepos> mDebugObjInfoRepos;
-    /* 0xE8 */ ScopedPtr<placeholder_t> mObjPlacement;
+    /* 0xE8 */ ScopedPtr<debug::ObjPlacement> mObjPlacement;
     /* 0xEC */ ScopedPtr<debug::ShowGrid> mShowGrid;
     /* 0xF0 */ ScopedPtr<debug::ShowPegFrame> mShowPegFrame;
 };

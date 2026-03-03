@@ -5,6 +5,8 @@
 using namespace scn::step;
 using mem::ExplicitScopedPtrUtil::CheckPointerIsValid;
 
+Component::~Component() { }
+
 debug::GeneralDrawer* Component::debugGeneralDrawer() {
     CheckPointerIsValid(mDebugGeneralDrawer);
     return mDebugGeneralDrawer;
