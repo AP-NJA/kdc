@@ -7,6 +7,17 @@ namespace util {
     public:
         ~PlacementNew();
 
+        inline operator T*() {
+            return ptr;
+        }
+
+        inline T* operator->() {
+            return ptr;
+        }
+
+        inline const T* operator->() const {
+            return ptr;
+        }
         void destruct();
     private:
         T* ptr;
