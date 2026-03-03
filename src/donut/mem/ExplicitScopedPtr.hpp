@@ -24,6 +24,10 @@ private:
     /* 0x4 */ T* mPtr;
 };
 
+namespace ExplicitScopedPtrUtil {
+    void CheckPointerIsValid(const void*) { } // weak
+}
+
 } // mem
 
 #endif
