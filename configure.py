@@ -103,10 +103,7 @@ parser.add_argument(
     help="path to sjiswrap.exe (optional)",
 )
 parser.add_argument(
-    "--ninja",
-    metavar="BINARY",
-    type=Path,
-    help="path to ninja binary (optional)"
+    "--ninja", metavar="BINARY", type=Path, help="path to ninja binary (optional)"
 )
 parser.add_argument(
     "--verbose",
@@ -270,16 +267,10 @@ cflags_nw4r = [
     "-fp_contract off",
     "-O4,p",
     "-func_align 16",
-    "-ipa file"
+    "-ipa file",
 ]
 
-cflags_hel = [
-    *cflags_base,
-    "-i src/hel/",
-    "-inline noauto",
-    "-O3",
-    "-func_align 4"
-]
+cflags_hel = [*cflags_base, "-i src/hel/", "-inline noauto", "-O3", "-func_align 4"]
 
 cflags_donut = [
     *cflags_base,
@@ -287,7 +278,7 @@ cflags_donut = [
     "-inline noauto",
     "-enc SJIS",
     "-O3",
-    "-func_align 4"
+    "-func_align 4",
 ]
 
 
@@ -316,9 +307,11 @@ def Rel(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
     }
 
 
-Matching = True                   # Object matches and should be linked
-NonMatching = False               # Object does not match and should not be linked
-Equivalent = config.non_matching  # Object should be linked when configured with --non-matching
+Matching = True  # Object matches and should be linked
+NonMatching = False  # Object does not match and should not be linked
+Equivalent = (
+    config.non_matching
+)  # Object should be linked when configured with --non-matching
 
 
 # Object is only matching for specific versions
@@ -346,7 +339,7 @@ config.libs = [
         "progress_category": "sdk",
         "objects": [
             Object(NonMatching, "revolution/OS/OSThread.c"),
-        ]
+        ],
     },
     {
         "lib": "nw4r/g3d",
@@ -355,7 +348,7 @@ config.libs = [
         "progress_category": "sdk",
         "objects": [
             Object(Matching, "nw4r/g3d/g3d_camera.cpp"),
-        ]
+        ],
     },
     {
         "lib": "nw4r/lyt",
@@ -363,8 +356,8 @@ config.libs = [
         "cflags": cflags_nw4r,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "nw4r/lyt/lyt_pane.cpp"),
-        ]
+            Object(Matching, "nw4r/lyt/lyt_pane.cpp"),
+        ],
     },
     {
         "lib": "hel/geo",
@@ -373,7 +366,7 @@ config.libs = [
         "progress_category": "hel",
         "objects": [
             Object(NonMatching, "hel/geo/Rect.cpp"),
-        ]
+        ],
     },
     {
         "lib": "scn/step",
@@ -382,7 +375,7 @@ config.libs = [
         "progress_category": "donut",
         "objects": [
             Object(NonMatching, "donut/scn/step/Component.cpp"),
-        ]
+        ],
     },
     {
         "lib": "scn/step/enemy",
@@ -391,7 +384,7 @@ config.libs = [
         "progress_category": "donut",
         "objects": [
             Object(NonMatching, "donut/scn/step/enemy/Param.cpp"),
-        ]
+        ],
     },
     {
         "lib": "scn/step/hero",
@@ -400,8 +393,8 @@ config.libs = [
         "progress_category": "donut",
         "objects": [
             Object(NonMatching, "donut/scn/step/hero/IndiviUtil.cpp"),
-        ]
-    }
+        ],
+    },
 ]
 
 
@@ -417,6 +410,7 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
     if module_id == 0:  # DOL
         return objects + ["dummy.c"]
     return objects
+
 
 # Uncomment to enable the link order callback.
 # config.link_order_callback = link_order_callback

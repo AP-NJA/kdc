@@ -86,7 +86,7 @@ public:
     static const u32 GRAY  = 0x808080FF;
     static const u32 WHITE = 0xFFFFFFFF;
     // clang-format on
-} ALIGN_DECL(4);
+} ALIGN(4);
 
 } // namespace ut
 } // namespace nw4r
