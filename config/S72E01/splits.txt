@@ -34,6 +34,9 @@ hel/geo/Rect.cpp:
 	.text       start:0x8019FD54 end:0x801A01FC
 	.sdata2     start:0x8055F8A8 end:0x8055F8B8
 
+donut/ocoll/Gimmick.cpp:
+	.text       start:0x801D5C28 end:0x801D5FB8
+
 donut/scn/step/Component.cpp:
 	.text       start:0x8021D0D4 end:0x80220F6C
 
