@@ -18,7 +18,7 @@ friend class JITParam;
 class JITParam {
 public:
     JITParam(const char* pParamName);
-    ~JITParam() { }
+    ~JITParam();
 
     void loadCheck() const;
 
