@@ -30,6 +30,10 @@ nw4r/lyt/lyt_pane.cpp:
 	.sbss       start:0x8055CFA0 end:0x8055CFA8
 	.sdata2     start:0x8055F118 end:0x8055F138
 
+donut/Main.cpp:
+	.text       start:0x80174AD8 end:0x80174AF8
+	.sdata      start:0x80556B70 end:0x80556B78
+
 hel/geo/Rect.cpp:
 	.text       start:0x8019FD54 end:0x801A01FC
 	.sdata2     start:0x8055F8A8 end:0x8055F8B8
