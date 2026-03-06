@@ -11,7 +11,7 @@ using namespace app;
 
 #define MESSAGE_GET_UNSAFED_TEXT_IMPL(name, category) \
     const char* Message::UnsafedText##name(const char* pText) { \
-        return Application::Instance->messageManager().text(category, pText); \
+        return Application::Instance->messageManager().unsafedText(category, pText); \
     }
 
 MESSAGE_GET_TEXT_IMPL(Name, msg::Manager::CAT_NAME)

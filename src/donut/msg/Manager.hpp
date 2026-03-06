@@ -28,6 +28,7 @@ public:
     };
 
     const char* text(Category category, const char* pText);
+    const char* unsafedText(Category category, const char* pText);
 };
 }
 
