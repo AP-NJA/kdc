@@ -381,6 +381,15 @@ config.libs = [
         ],
     },
     {
+        "lib": "donut/app",
+        "mw_version": config.linker_version,
+        "cflags": cflags_donut,
+        "progress_category": "donut",
+        "objects": [
+            Object(NonMatching, "donut/app/Locale.cpp"),
+        ],
+    },
+    {
         "lib": "ocoll",
         "mw_version": config.linker_version,
         "cflags": cflags_donut,
