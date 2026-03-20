@@ -1,6 +1,5 @@
-# Kirby's Dream Collection  
+# Kirby's Dream Collection [![Code Progress]][progress] [![Linked Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord]
 <!--[![Build Status]][actions]-->
-[![Code Progress]][progress] [![Linked Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord]
 =============
 
 <!--
