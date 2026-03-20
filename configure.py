@@ -392,7 +392,7 @@ config.libs = [
         "objects": [
             Object(NonMatching, "donut/app/AppImpl.cpp"),
             Object(Matching, "donut/app/Locale.cpp"),
-            Object(NonMatching, "donut/app/Message.cpp"),
+            Object(Matching, "donut/app/Message.cpp"),
         ],
     },
     {
