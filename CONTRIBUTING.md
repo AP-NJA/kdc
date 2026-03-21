@@ -46,6 +46,8 @@ Use proper header guards. HAL likes to use the `.hpp` extension for their game h
 ### Files and includes
 For SDK, STL, and hel includes, use angled brackets. For game includes, use quotation marks.
 
+When including files, use the full path relative to the `src` folder.
+
 ### Function Parameters
 Function arguments should have certain prefixes if applicable:
 - `p` for pointers
