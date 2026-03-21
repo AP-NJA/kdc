@@ -382,7 +382,7 @@ config.libs = [
         "cflags": cflags_hel,
         "progress_category": "hel",
         "objects": [
-            Object(NonMatching, "hel/math/Random.cpp"),
+            Object(Matching, "hel/math/Random.cpp"),
         ],
     },
     {

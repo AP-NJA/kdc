@@ -10,16 +10,19 @@ namespace hel  { namespace math {
         public:
             static Seed Default();
 
-            int _0;
-            int _4;
-            int _8;
-            int _C;
+            /* 0x0 */ s32 m_0;
+            /* 0x4 */ s32 m_4;
+            /* 0x8 */ s32 m_8;
+            /* 0xC */ u32 m_C;
         };
-    private:
-        u32 randCoreU32();
-        f32 randCoreF32();
-    public:
-        Random(const Seed&);
+
+        Random(const Seed& rSeed);
+
+        //Is folded into rand(int)
+        int operator()(int arg1) {
+            return randS32(arg1);
+        }
+
         bool randBool(float);
         int rand(int);
         int rand(int, int);
@@ -31,13 +34,11 @@ namespace hel  { namespace math {
         f32 randF32(f32, f32);
         f32 randNF();
         f32 randAF();
+        //Note: may be private
+        u32 randCoreU32();
+        f32 randCoreF32();
 
-        //Is folded into rand(int)
-        int operator()(int seed) {
-            return randS32(seed);
-        }
-
-        Seed mSeed;
+        /* 0x0 */ Seed mSeed;
     };
 
 } //namespace math
