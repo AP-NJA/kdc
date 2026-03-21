@@ -27,12 +27,15 @@ namespace hel  { namespace math {
         s32 randS32(s32);
         s32 randS32(s32, s32);
         u32 randU32(u32);
-        s32 randU32(u32, u32);
+        u32 randU32(u32, u32);
         f32 randF32(f32, f32);
         f32 randNF();
         f32 randAF();
 
-        int operator()(int seed);
+        //Is folded into rand(int)
+        int operator()(int seed) {
+            return randS32(seed);
+        }
 
         Seed mSeed;
     };
