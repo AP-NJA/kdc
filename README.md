@@ -28,7 +28,7 @@ This repository does **not** contain any game assets or assembly whatsoever. An 
 
 Supported versions:
 
-- `S72E01`: Rev 0 (USA)
+- `S72E01`: Rev 0 (USA) (`main.dol`)
 
 Dependencies
 ============
