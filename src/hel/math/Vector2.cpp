@@ -48,11 +48,6 @@ void Vector2::operator*=(float scalar) {
     y *= scalar;
 }
 
-Vector2::Vector2(float _x, float _y)
-    : x(_x)
-    , y(_y)
-{ }
-
 //https://decomp.me/scratch/V5weV
 f32 Vector2::normalize() {
     f32 lengthVal = length();

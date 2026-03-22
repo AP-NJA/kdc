@@ -17,7 +17,10 @@ namespace hel { namespace math {
         Vector2();
 
         //merged into set
-        Vector2(float _x, float _y);
+        Vector2(float _x, float _y)
+            : x(_x)
+            , y(_y)
+        { }
 
         //merged into nw4r::VEC2::operator=
         Vector2(const Vector2& rOther);
