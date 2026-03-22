@@ -383,6 +383,8 @@ config.libs = [
         "progress_category": "hel",
         "objects": [
             Object(Matching, "hel/math/Random.cpp"),
+            Object(NonMatching, "hel/math/Vector2.cpp"),
+
         ],
     },
     {

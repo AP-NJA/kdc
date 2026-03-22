@@ -6,6 +6,7 @@
 namespace hel { namespace math {
     class Vector3 {
     public:
+        //Gets merged into nw4r::math::VEC3::VEC3(float, float, float)
         Vector3(float, float, float);
 
         float x;
