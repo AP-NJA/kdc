@@ -47,11 +47,10 @@ void Vector2::operator*=(float scalar) {
     y *= scalar;
 }
 
-//https://decomp.me/scratch/V5weV
 f32 Vector2::normalize() {
     f32 lengthVal = length();
     if (lengthVal == 0.0f) {
-        return 0.0f;
+        return lengthVal;
     }
     *this /= lengthVal;
 
