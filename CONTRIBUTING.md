@@ -53,7 +53,7 @@ Function arguments should have certain prefixes if applicable:
 - `p` for pointers
 - `r` for values passed by reference
 
-If the name of an argument is unknown, name the parameter `argX`, where `X` is the argument position;
+If the name of an argument is unknown, name the parameter `argX`, where `X` is the argument position:
 
 ```cpp
 void MyClass::SomeFunction(int knownArg, int arg2, int arg3, int anotherKnownArg, int arg5) {
