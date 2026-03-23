@@ -102,9 +102,10 @@ parser.add_argument(
     type=Path,
     help="path to sjiswrap.exe (optional)",
 )
-parser.add_argument(
-    "--ninja", metavar="BINARY", type=Path, help="path to ninja binary (optional)"
-)
+parser.add_argument("--ninja",
+                    metavar="BINARY",
+                    type=Path,
+                    help="path to ninja binary (optional)")
 parser.add_argument(
     "--verbose",
     action="store_true",
@@ -238,6 +239,7 @@ elif args.warn == "error":
 cflags_runtime = [
     *cflags_base,
     "-use_lmw_stmw on",
+    "-O4,s",
     "-str reuse,pool,readonly",
     "-gccinc",
     "-common off",
@@ -270,7 +272,9 @@ cflags_nw4r = [
     "-ipa file",
 ]
 
-cflags_hel = [*cflags_base, "-i src/hel/", "-inline noauto", "-O3", "-func_align 4"]
+cflags_hel = [
+    *cflags_base, "-i src/hel/", "-inline noauto", "-O3", "-func_align 4"
+]
 
 cflags_donut = [
     *cflags_base,
@@ -280,7 +284,6 @@ cflags_donut = [
     "-O3",
     "-func_align 4",
 ]
-
 
 config.linker_version = "Wii/1.3"
 
@@ -309,9 +312,8 @@ def Rel(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
 
 Matching = True  # Object matches and should be linked
 NonMatching = False  # Object does not match and should not be linked
-Equivalent = (
-    config.non_matching
-)  # Object should be linked when configured with --non-matching
+Equivalent = (config.non_matching
+              )  # Object should be linked when configured with --non-matching
 
 
 # Object is only matching for specific versions
@@ -323,21 +325,30 @@ config.warn_missing_config = True
 config.warn_missing_source = False
 config.libs = [
     {
-        "lib": "Runtime.PPCEABI.H",
-        "mw_version": config.linker_version,
-        "cflags": cflags_runtime,
-        "progress_category": "sdk",  # str | List[str]
+        "lib":
+        "Runtime.PPCEABI.H",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_runtime,
+        "progress_category":
+        "sdk",  # str | List[str]
         "objects": [
             Object(NonMatching, "runtime/__init_cpp_exceptions.cpp"),
+            Object(Matching, "runtime/__mem.c"),
             # Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
             # Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],
     },
     {
-        "lib": "revolution/OS",
-        "mw_version": "Wii/1.0",
-        "cflags": cflags_rvl,
-        "progress_category": "sdk",
+        "lib":
+        "revolution/OS",
+        "mw_version":
+        "Wii/1.0",
+        "cflags":
+        cflags_rvl,
+        "progress_category":
+        "sdk",
         "objects": [
             Object(Matching, "revolution/OS/OSAlarm.c"),
             Object(NonMatching, "revolution/OS/OSAlloc.c"),
@@ -347,10 +358,14 @@ config.libs = [
         ],
     },
     {
-        "lib": "nw4r/g3d",
-        "mw_version": config.linker_version,
-        "cflags": cflags_nw4r,
-        "progress_category": "sdk",
+        "lib":
+        "nw4r/g3d",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_nw4r,
+        "progress_category":
+        "sdk",
         "objects": [
             Object(NonMatching, "nw4r/g3d/dcc/g3d_basic.cpp"),
             Object(NonMatching, "nw4r/g3d/dcc/g3d_maya.cpp"),
@@ -358,10 +373,14 @@ config.libs = [
         ],
     },
     {
-        "lib": "nw4r/lyt",
-        "mw_version": config.linker_version,
-        "cflags": cflags_nw4r,
-        "progress_category": "sdk",
+        "lib":
+        "nw4r/lyt",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_nw4r,
+        "progress_category":
+        "sdk",
         "objects": [
             Object(Matching, "nw4r/lyt/lyt_pane.cpp"),
             Object(NonMatching, "nw4r/lyt/lyt_group.cpp"),
@@ -397,10 +416,14 @@ config.libs = [
         ],
     },
     {
-        "lib": "donut/app",
-        "mw_version": config.linker_version,
-        "cflags": cflags_donut,
-        "progress_category": "donut",
+        "lib":
+        "donut/app",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_donut,
+        "progress_category":
+        "donut",
         "objects": [
             Object(NonMatching, "donut/app/AppImpl.cpp"),
             Object(Matching, "donut/app/Locale.cpp"),
@@ -408,19 +431,29 @@ config.libs = [
         ],
     },
     {
-        "lib": "ocoll",
-        "mw_version": config.linker_version,
-        "cflags": cflags_donut,
-        "progress_category": "donut",
+        "lib":
+        "ocoll",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_donut,
+        "progress_category":
+        "donut",
         "objects": [
-            Object(NonMatching, "donut/ocoll/Gimmick.cpp", extra_cflags=["-O3,s"]),
+            Object(NonMatching,
+                   "donut/ocoll/Gimmick.cpp",
+                   extra_cflags=["-O3,s"]),
         ],
     },
     {
-        "lib": "scn/step",
-        "mw_version": config.linker_version,
-        "cflags": cflags_donut,
-        "progress_category": "donut",
+        "lib":
+        "scn/step",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_donut,
+        "progress_category":
+        "donut",
         "objects": [
             Object(NonMatching, "donut/scn/step/Component.cpp"),
             Object(NonMatching, "donut/scn/step/GridPos.cpp"),
@@ -445,10 +478,14 @@ config.libs = [
         ],
     },
     {
-        "lib": "scn/step/hero",
-        "mw_version": config.linker_version,
-        "cflags": cflags_donut,
-        "progress_category": "donut",
+        "lib":
+        "scn/step/hero",
+        "mw_version":
+        config.linker_version,
+        "cflags":
+        cflags_donut,
+        "progress_category":
+        "donut",
         "objects": [
             Object(
                 NonMatching,
@@ -476,7 +513,6 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
 
 # Uncomment to enable the link order callback.
 # config.link_order_callback = link_order_callback
-
 
 # Optional extra categories for progress tracking
 # Adjust as desired for your project
