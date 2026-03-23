@@ -48,7 +48,7 @@ inline double fabs_wrapper(double x) {
     return __fabs(x);
 }
 
-inline float fabs(float x) {
+float fabs(float x) {
     return fabs_wrapper(x);
 }
 

@@ -43,7 +43,7 @@ namespace hel { namespace math {
         f32 setLength(f32);
         f32 cos(const Vector2& rOther) const;
         f32 signedAngle(const Vector2& rOther) const;
-        void rotate(f32);
+        void rotate(f32 angle);
         Vector2 getNormalized() const;
         Vector3 toVector3() const;
         Vector3 toVector3XOY() const;
