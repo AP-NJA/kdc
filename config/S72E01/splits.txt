@@ -90,6 +90,12 @@ hel/math/Vector2.cpp:
 	.sbss       start:0x8055D248 end:0x8055D268
 	.sdata2     start:0x8055F868 end:0x8055F880
 
+hel/math/Vector3.cpp:
+	.text       start:0x8019F50C end:0x8019FD4C
+	.ctors      start:0x80406324 end:0x80406328
+	.bss        start:0x805452D0 end:0x80545310
+	.sdata2     start:0x8055F880 end:0x8055F8A0
+
 hel/geo/Rect.cpp:
 	.text       start:0x8019FD54 end:0x801A01FC
 	.sdata2     start:0x8055F8A8 end:0x8055F8B8
