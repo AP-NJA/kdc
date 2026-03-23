@@ -23,9 +23,11 @@ inline float ceilf(float x) {
 inline float cosf(float x) {
     return cos(x);
 }
-inline float sinf(float x) {
-    return sin(x);
-}
+
+float sinf(float x);
+//inline float sinf(float x) {
+//    return sin(x);
+//}
 inline float sqrtf(float x) {
     return sqrt(x);
 }

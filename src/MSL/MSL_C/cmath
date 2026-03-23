@@ -48,9 +48,11 @@ inline double fabs_wrapper(double x) {
     return __fabs(x);
 }
 
-inline float fabs(float x) {
-    return fabs_wrapper(x);
-}
+//Note: this is defined in hel/math/Vector3.cpp, probably due to it being a weak symbol (I think)-
+float fabs(float x);
+//float fabs(float x) {
+  //  return fabs_wrapper(x);
+//}
 
 } // namespace std
 

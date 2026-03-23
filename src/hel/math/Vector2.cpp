@@ -126,10 +126,11 @@ f32 Vector2::signedAngle(const Vector2& rOther) const {
     return cos;
 }
 
-void Vector2::rotate(f32 arg1) {
-    float sin = sinf(arg1);
-    float cos = cosf(arg1);
-   Vector2 rotatedAngle(x * cos - y * sin, x * sin + y * cos);
+//https://decomp.me/scratch/YhKOO
+void Vector2::rotate(f32 angle) {
+    float sin = sinf(angle);
+    float cos = cosf(angle);
+    Vector2 rotatedAngle(x * cos - y * sin, x * sin + y * cos);
     set(rotatedAngle.x, rotatedAngle.y);
 }
 
