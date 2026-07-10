@@ -354,12 +354,79 @@ revolution/OS/__ppc_eabi_init.c:
 	.init       start:0x80006620 end:0x80006684
 	.text       start:0x80028530 end:0x800285F0
 
+revolution/EXI/EXIBios.c:
+	.text       start:0x800285F0 end:0x80029EF0
+	.data       start:0x8042FB40 end:0x8042FB88
+	.bss        start:0x8049A290 end:0x8049A350
+	.sdata      start:0x80556518 end:0x80556520
+	.sbss       start:0x8055C8C8 end:0x8055C8D0
+
+revolution/EXI/EXIUart.c:
+	.text       start:0x80029EF0 end:0x8002A230
+	.sbss       start:0x8055C8D0 end:0x8055C8E0
+
+revolution/EXI/EXICommon.c:
+	.text       start:0x8002A230 end:0x8002A3C0
+	.sdata2     start:0x8055E528 end:0x8055E530
+
+revolution/SI/SIBios.c:
+	.text       start:0x8002A3C0 end:0x8002B9C0
+	.data       start:0x8042FB88 end:0x8042FBF8
+	.bss        start:0x8049A350 end:0x8049A570
+	.sdata      start:0x80556520 end:0x80556528
+	.sbss       start:0x8055C8E0 end:0x8055C8F0
+
+revolution/SI/SISamplingRate.c:
+	.text       start:0x8002B9C0 end:0x8002BAB0
+	.data       start:0x8042FBF8 end:0x8042FC90
+	.sbss       start:0x8055C8F0 end:0x8055C8F8
+
 revolution/DB/db.c:
 	.text       start:0x8002BAB0 end:0x8002BAD0 align:16
 	.sbss       start:0x8055C8F8 end:0x8055C900
 
 revolution/VI/vi.c:
 	.text       start:0x8002BAD0 end:0x8002E490 align:16
+	.data       start:0x8042FC90 end:0x804301E8
+	.bss        start:0x8049A570 end:0x8049A6E0
+	.sdata      start:0x80556528 end:0x80556548
+	.sbss       start:0x8055C900 end:0x8055C9B0
+
+revolution/VI/i2c.c:
+	.text       start:0x8002E490 end:0x8002EDB0
+	.sdata      start:0x80556548 end:0x80556550
+	.sbss       start:0x8055C9B0 end:0x8055C9B8
+
+revolution/VI/vi3in1.c:
+	.text       start:0x8002EDB0 end:0x800304E0
+	.data       start:0x804301E8 end:0x80430800
+	.bss        start:0x8049A6E0 end:0x8049A700
+	.sdata      start:0x80556550 end:0x80556560
+	.sbss       start:0x8055C9B8 end:0x8055C9D0
+
+revolution/MTX/mtx.c:
+	.text       start:0x800304E0 end:0x800310F0
+	.sdata      start:0x80556560 end:0x80556568
+	.sdata2     start:0x8055E530 end:0x8055E550
+
+revolution/MTX/mtxvec.c:
+	.text       start:0x800310F0 end:0x800311B0
+
+revolution/MTX/mtx44.c:
+	.text       start:0x800311B0 end:0x800314F0
+	.sdata2     start:0x8055E550 end:0x8055E568
+
+revolution/MTX/mtx44vec.c:
+	.text       start:0x800314F0 end:0x80031570
+
+revolution/MTX/vec.c:
+	.text       start:0x80031570 end:0x800317B0
+	.sdata2     start:0x8055E568 end:0x8055E578
+
+revolution/MTX/quat.c:
+	.text       start:0x800317B0 end:0x80031C20
+	.rodata     start:0x80407840 end:0x80407850
+	.sdata2     start:0x8055E578 end:0x8055E588
 
 revolution/AI/ai.c:
 	.text       start:0x80042860 end:0x80042E10 align:16
