@@ -454,8 +454,8 @@ config.libs = [
         # Object(NonMatching, "revolution/EXI/EXICommon.c"),
     ]),
     RVL_Lib("si", [
-        Object(NonMatching, "revolution/SI/SIBios.c"),
-        Object(NonMatching, "revolution/SI/SISamplingRate.c"),
+        # Object(NonMatching, "revolution/SI/SIBios.c"),
+        # Object(NonMatching, "revolution/SI/SISamplingRate.c"),
     ]),
     RVL_Lib("db", [
         Object(Matching, "revolution/DB/db.c"),
