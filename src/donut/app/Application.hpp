@@ -2,6 +2,7 @@
 #define DONUT_APP_APPLICATION_HPP
 
 #include <hel/common/ExplicitSingleton.hpp>
+#include <hel/math/Random.hpp>
 #include "donut/app/HIDErrorMenu.hpp"
 #include "donut/msg/Manager.hpp"
 #include "donut/gfx/GameScreen.hpp"
@@ -21,6 +22,7 @@ public:
     preload::PreLoadManager& preLoadManager();
     file::FileManager& fileManager();
     font::FontManager& fontManager();
+    hel::math::Random& random();
 };
 
 

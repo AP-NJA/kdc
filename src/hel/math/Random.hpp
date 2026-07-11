@@ -18,21 +18,21 @@ namespace hel  { namespace math {
 
         Random(const Seed& rSeed);
 
-        //Is folded into rand(int)
+        // NOTE: Is merged into rand(int)
         int operator()(int arg1);
 
-        bool randBool(float);
-        int rand(int);
-        int rand(int, int);
-        float randF(float, float);
-        s32 randS32(s32);
-        s32 randS32(s32, s32);
-        u32 randU32(u32);
-        u32 randU32(u32, u32);
-        f32 randF32(f32, f32);
+        bool randBool(f32 max);
+        int rand(int max);
+        int rand(int min, int max);
+        f32 randF(f32 min, f32 max);
+        s32 randS32(s32 max);
+        s32 randS32(s32 min, s32 max);
+        u32 randU32(u32 max);
+        u32 randU32(u32 min, u32 max);
+        f32 randF32(f32 min, f32 max);
         f32 randNF();
         f32 randAF();
-        //Note: may be private
+private:
         u32 randCoreU32();
         f32 randCoreF32();
 
