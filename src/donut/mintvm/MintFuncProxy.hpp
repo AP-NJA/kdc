@@ -16,6 +16,7 @@ namespace mintvm {
 template <typename T>
 class mint_wrapNative_helper {
 public:
+    // TODO: This seems to be sometimes inlined as well
     mint_wrapNative_helper(T arg) DONT_INLINE : mType(arg) {
     }
 
