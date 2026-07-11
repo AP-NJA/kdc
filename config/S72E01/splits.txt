@@ -493,6 +493,56 @@ revolution/GX/GXPerf.c:
 	.text       start:0x800390C0 end:0x800398F0
 	.data       start:0x80431010 end:0x804310F8
 
+revolution/DVD/dvdfs.c:
+	.text       start:0x800398F0 end:0x8003A140
+	.data       start:0x804310F8 end:0x80431260
+	.sdata      start:0x805565C8 end:0x805565D8
+	.sbss       start:0x8055CA30 end:0x8055CA60
+
+revolution/DVD/dvd.c:
+	.text       start:0x8003A140 end:0x8003F050
+	.data       start:0x80431260 end:0x804316A8
+	.bss        start:0x8049AE00 end:0x8049FAB0
+	.sdata      start:0x805565D8 end:0x805565F0
+	.sbss       start:0x8055CA60 end:0x8055CAF8
+
+revolution/DVD/dvdqueue.c:
+	.text       start:0x8003F050 end:0x8003F2D0
+	.bss        start:0x8049FAB0 end:0x8049FAE0
+
+revolution/DVD/dvderror.c:
+	.text       start:0x8003F2D0 end:0x8003FCF0
+	.data       start:0x804316A8 end:0x804316D8
+	.bss        start:0x8049FAE0 end:0x8049FD40
+	.sbss       start:0x8055CAF8 end:0x8055CB08
+
+revolution/DVD/dvdidutils.c:
+	.text       start:0x8003FCF0 end:0x8003FDE0
+
+revolution/DVD/dvdFatal.c:
+	.text       start:0x8003FDE0 end:0x8003FF50
+	.rodata     start:0x80407850 end:0x80407888
+	.data       start:0x804316D8 end:0x80431EA0
+	.sdata      start:0x805565F0 end:0x805565F8
+	.sbss       start:0x8055CB08 end:0x8055CB10
+	.sdata2     start:0x8055E698 end:0x8055E6A0
+
+revolution/DVD/dvdDeviceError.c:
+	.text       start:0x8003FF50 end:0x800401E0
+	.rodata     start:0x80407888 end:0x804078A8
+	.data       start:0x80431EA0 end:0x80432038
+	.bss        start:0x8049FD40 end:0x8049FD60
+	.sdata      start:0x805565F8 end:0x80556600
+	.sbss       start:0x8055CB10 end:0x8055CB18
+	.sdata2     start:0x8055E6A0 end:0x8055E6A8
+
+revolution/DVD/dvd_broadway.c:
+	.text       start:0x800401E0 end:0x80042860
+	.data       start:0x80432038 end:0x80432F40
+	.bss        start:0x8049FD60 end:0x8049FF20
+	.sdata      start:0x80556600 end:0x80556610
+	.sbss       start:0x8055CB18 end:0x8055CB40
+
 revolution/AI/ai.c:
 	.text       start:0x80042860 end:0x80042E10 align:16
 	.data       start:0x80432F40 end:0x80432F88
