@@ -438,7 +438,7 @@ config.libs = [
         Object(NonMatching, "revolution/OS/OSTime.c"),
         # Object(NonMatching, "revolution/OS/OSUtf.c"),
         # Object(NonMatching, "revolution/OS/OSIpc.c"),
-        Object(NonMatching, "revolution/OS/OSStateTM.c"),
+        # Object(NonMatching, "revolution/OS/OSStateTM.c"),
         # Object(NonMatching, "revolution/OS/OSPlayRecord.c"),
         # Object(NonMatching, "revolution/OS/OSStateFlags.c"),
         # Object(NonMatching, "revolution/OS/OSNet.c"),
