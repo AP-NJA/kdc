@@ -30,7 +30,7 @@ void Guard::setGuard(bool flag)
 {
     mEnableGuardState = flag;
 
-    if (mEnableGuardFlash != false)
+    if (mEnableGuardFlash)
     {
         return;
     }
