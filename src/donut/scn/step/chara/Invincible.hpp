@@ -6,37 +6,39 @@
 /* clang-format off */
 namespace scn { namespace step { namespace chara {
 
-const u32 T_ALPHA_ANIM_TABLE[10] = {
-    0xF0,
-    0x50,
-    0xA0,
-    0x14,
-    0x8C,
-    0x0A,
-    0x78,
-    0x00,
-    0x64,
-    0x00
-};
-
 class Invincible
 {
 public:
     Invincible();
+
     void update();
+
     bool isInvincible() const;
     void set(u32 frames);
     void clear();
+
     void setPerm();
+    // Gets merged into scn::step::enemy::SuperStop::onSuperStopStarted(const scn::step::spstop::Manager&)
+    void unsetPerm();
+    // Gets merged into nururi::Nururi::isValid() const
+    bool isPerm() const;
+
+    // Gets merged into scn::step::enemy::mumbies::Custom::onCaptured()
+    void setMighty();
     void unsetMighty();
     bool isMighty() const;
+
+    // Gets merged into GKI_getfirst
+    u32 getFrame() const;
+
     u32 getFlashAlpha() const;
     void updateFrame();
+
 private:
-    /* 0x00 */ u32 mInvincibleFrames;
-    /* 0x04 */ u32 mFlashCycle;
-    /* 0x08 */ bool mUsingIntangibleMove;
-    /* 0x09 */ bool mIsCandyActive;
+    /* 0x00 */ u32 mFrame;
+    /* 0x04 */ u32 mAnimFrame;
+    /* 0x08 */ bool mIsPerm;
+    /* 0x09 */ bool mIsMighty;
 };
 
 }}}

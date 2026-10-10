@@ -2,96 +2,113 @@
 
 using namespace scn::step::chara;
 
+namespace {
+    const u32 T_ALPHA_ANIM_TABLE[10] = {
+        0xF0,
+        0x50,
+        0xA0,
+        0x14,
+        0x8C,
+        0x0A,
+        0x78,
+        0x00,
+        0x64,
+        0x00
+    };
+}
+
 Invincible::Invincible()
 {
-    mInvincibleFrames = 0;
-    mFlashCycle = 0;
-    mUsingIntangibleMove = 0;
-    mIsCandyActive = 0;
+    mFrame = 0;
+    mAnimFrame = 0;
+    mIsPerm = 0;
+    mIsMighty = 0;
 }
 
 void Invincible::update()
 {
-    u32 nextFlash;
     if (isInvincible())
     {
         updateFrame();
-        nextFlash = mFlashCycle + 1;
-        mFlashCycle = nextFlash;
-        if (nextFlash == 0x14)
+        if (++mAnimFrame == 0x14)
         {
-            mFlashCycle = 0x10;
+            mAnimFrame = 0x10;
         }
     }
 }
 
 bool Invincible::isInvincible() const
 {
-    bool result = false;
-    if ((mUsingIntangibleMove != false) || (mIsCandyActive != false) || (mInvincibleFrames != 0))
-    {
-        result = true;
-    }
-
-    return result;
+    return mIsPerm || mIsMighty || mFrame != 0;
 }
 
 void Invincible::set(u32 frames)
 {
-    if (mInvincibleFrames < frames)
+    if (mFrame < frames)
     {
-        mInvincibleFrames = frames;
+        mFrame = frames;
     }
 
-    mFlashCycle = 0;
-    return;
+    mAnimFrame = 0;
 }
 
 void Invincible::clear()
 {
-    mInvincibleFrames = 0;
-    mUsingIntangibleMove = false;
+    mFrame = 0;
+    unsetPerm();
 }
 
 void Invincible::setPerm()
 {
-    mUsingIntangibleMove = true;
-    mFlashCycle = 0;
+    mIsPerm = true;
+    mAnimFrame = 0;
+}
+
+void Invincible::unsetPerm()
+{
+    mIsPerm = false;
+}
+
+bool Invincible::isPerm() const
+{
+    return mIsPerm;
+}
+
+void Invincible::setMighty()
+{
+    mIsMighty = true;
 }
 
 void Invincible::unsetMighty()
 {
-    mIsCandyActive = false;
+    mIsMighty = false;
 }
 
 bool Invincible::isMighty() const
 {
-    return mIsCandyActive;
+    return mIsMighty;
+}
+
+u32 Invincible::getFrame() const
+{
+    return mFrame;
 }
 
 #pragma peephole off
 u32 Invincible::getFlashAlpha() const
 {
-    bool result = isInvincible();
-    u32 alpha;
-
-    if (result)
+    if (isInvincible())
     {
-        alpha = T_ALPHA_ANIM_TABLE[mFlashCycle / 2];
+        return ::T_ALPHA_ANIM_TABLE[mAnimFrame / 2];
     }
-    else
-    {
-        alpha = 0;
-    }
-
-    return alpha;
+    
+    return 0;
 }
 
 void Invincible::updateFrame()
 {
-    u32 currentFrames = mInvincibleFrames;
-    if (currentFrames != 0)
+    if (mFrame != 0)
     {
-        mInvincibleFrames = currentFrames - 1;
+        mFrame--;
     }
 }
