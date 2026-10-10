@@ -9,41 +9,25 @@
 /* clang-format off */
 namespace scn { namespace step { namespace hero {
 
-const u32 T_ALPHA_TABLE[20] = {
-    0xC0,
-    0xC0,
-    0xA0,
-    0x90,
-    0x80,
-    0x60,
-    0x40,
-    0x20,
-    0x00,
-    0x00,
-    0x00,
-    0x00,
-    0x40,
-    0x60,
-    0x40,
-    0x20,
-    0x00,
-    0x00,
-    0x00,
-    0x00
-};
-
 class Guard
 {
 public:
     Guard(Hero &hero);
+    // Gets merged into scn::IScene::~IScene()
+    ~Guard();
+
     void update();
+    // Gets merged into seq::SequenceGrandMenu::onChildSequenceEnd(seq::ISequence&)
+    void resetAnimFrame();
     void setGuard(bool flag);
+    // Gets merged into pause::ButtonPanel::isEnable() const
+    bool isGuard() const;
     _GXColor getColor() const;
 private:
     /* 0x00 */ Hero *mHero;
     /* 0x04 */ bool mEnableGuardState;
     /* 0x05 */ bool mEnableGuardFlash;
-    /* 0x08 */ u32 mGuardFlashCycle;
+    /* 0x08 */ u32 mAnimFrame;
 };
 
 }}}
