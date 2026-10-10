@@ -2,28 +2,58 @@
 
 using namespace scn::step::hero;
 
+namespace {
+    const u32 T_ALPHA_TABLE[20] = {
+        0xC0,
+        0xC0,
+        0xA0,
+        0x90,
+        0x80,
+        0x60,
+        0x40,
+        0x20,
+        0x00,
+        0x00,
+        0x00,
+        0x00,
+        0x40,
+        0x60,
+        0x40,
+        0x20,
+        0x00,
+        0x00,
+        0x00,
+        0x00
+    };
+}
+
 Guard::Guard(Hero &hero)
     : mHero(&hero)
 {
     mEnableGuardState = false;
     mEnableGuardFlash = false;
-    mGuardFlashCycle = 0;
+    mAnimFrame = 0;
 }
 
 void Guard::update()
 {
     if (mEnableGuardState != false)
     {
-        u32 guardFlashCycle = mGuardFlashCycle + 1;
-        mGuardFlashCycle = guardFlashCycle;
+        u32 guardFlashCycle = mAnimFrame + 1;
+        mAnimFrame = guardFlashCycle;
 
         if (guardFlashCycle >= 20)
         {
-            mGuardFlashCycle = 12;
+            mAnimFrame = 12;
         }
     }
 
     mEnableGuardFlash = mEnableGuardState;
+}
+
+void Guard::resetAnimFrame()
+{
+    mAnimFrame = 0;
 }
 
 void Guard::setGuard(bool flag)
@@ -40,7 +70,12 @@ void Guard::setGuard(bool flag)
         return;
     }
 
-    mGuardFlashCycle = 0;
+    resetAnimFrame();
+}
+
+bool Guard::isGuard() const
+{
+    return mEnableGuardState;
 }
 
 #pragma peephole off
@@ -51,7 +86,7 @@ _GXColor Guard::getColor() const
 
     if (mEnableGuardState != false)
     {
-        alpha = T_ALPHA_TABLE[mGuardFlashCycle];
+        alpha = T_ALPHA_TABLE[mAnimFrame];
     }
 
     color.r = 0xFF;
