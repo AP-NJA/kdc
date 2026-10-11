@@ -1405,6 +1405,7 @@ config.libs = [
         "progress_category": "donut",
         "objects": [
             Object(Equivalent, "donut/scn/step/chara/Invincible.cpp"),
+            Object(Equivalent, "donut/scn/step/chara/Shake.cpp"),
         ],
     },
     {
