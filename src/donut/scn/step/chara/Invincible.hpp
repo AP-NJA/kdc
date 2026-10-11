@@ -32,7 +32,7 @@ public:
     bool isMighty() const;
     u32 getFlashAlpha() const;
     void updateFrame();
-private:
+public:
     /* 0x00 */ u32 mInvincibleFrames;
     /* 0x04 */ u32 mFlashCycle;
     /* 0x08 */ bool mUsingIntangibleMove;

@@ -1432,8 +1432,9 @@ config.libs = [
         "cflags": cflags_donut,
         "progress_category": "donut",
         "objects": [
-            Object(NonMatching, "donut/scn/step/hero/Guard.cpp"),
+            Object(Equivalent, "donut/scn/step/hero/Guard.cpp"),
             Object(NonMatching, "donut/scn/step/hero/IndiviUtil.cpp", extra_cflags=["-O3"]),
+            Object(NonMatching, "donut/scn/step/hero/Invincible.cpp"),
         ],
     },
     {
