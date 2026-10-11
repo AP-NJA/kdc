@@ -2,45 +2,80 @@
 
 using namespace scn::step::hero;
 
-Guard::Guard(Hero &hero)
-    : mHero(&hero)
-{
-    mEnableGuardState = false;
-    mEnableGuardFlash = false;
-    mGuardFlashCycle = 0;
+namespace {
+    const u32 T_ALPHA_TABLE[20] = {
+        0xC0,
+        0xC0,
+        0xA0,
+        0x90,
+        0x80,
+        0x60,
+        0x40,
+        0x20,
+        0x00,
+        0x00,
+        0x00,
+        0x00,
+        0x40,
+        0x60,
+        0x40,
+        0x20,
+        0x00,
+        0x00,
+        0x00,
+        0x00
+    };
 }
+
+Guard::Guard(Hero &hero)
+    : mHero(hero)
+{
+    mIsGuard = false;
+    mIsFlash = false;
+    mAnimFrame = 0;
+}
+
+Guard::~Guard() { }
 
 void Guard::update()
 {
-    if (mEnableGuardState != false)
+    if (mIsGuard)
     {
-        u32 guardFlashCycle = mGuardFlashCycle + 1;
-        mGuardFlashCycle = guardFlashCycle;
-
-        if (guardFlashCycle >= 20)
+        mAnimFrame++;
+        if (mAnimFrame >= 20)
         {
-            mGuardFlashCycle = 12;
+            mAnimFrame = 12;
         }
     }
 
-    mEnableGuardFlash = mEnableGuardState;
+    mIsFlash = mIsGuard;
+}
+
+void Guard::resetAnimFrame()
+{
+    mAnimFrame = 0;
 }
 
 void Guard::setGuard(bool flag)
 {
-    mEnableGuardState = flag;
+    mIsGuard = flag;
 
-    if (mEnableGuardFlash)
+    if (mIsFlash)
     {
         return;
     }
 
-    if (mEnableGuardState != true)
+    if (mIsGuard != true)
     {
         return;
     }
 
-    mGuardFlashCycle = 0;
+    resetAnimFrame();
+}
+
+bool Guard::isGuard() const
+{
+    return mIsGuard;
 }
 
 #pragma peephole off
@@ -49,9 +84,9 @@ _GXColor Guard::getColor() const
     _GXColor color;
     u32 alpha = 0;
 
-    if (mEnableGuardState != false)
+    if (mIsGuard)
     {
-        alpha = T_ALPHA_TABLE[mGuardFlashCycle];
+        alpha = T_ALPHA_TABLE[mAnimFrame];
     }
 
     color.r = 0xFF;
