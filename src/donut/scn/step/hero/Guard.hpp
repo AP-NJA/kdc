@@ -23,10 +23,11 @@ public:
     // Gets merged into pause::ButtonPanel::isEnable() const
     bool isGuard() const;
     _GXColor getColor() const;
+    
 private:
-    /* 0x00 */ Hero *mHero;
-    /* 0x04 */ bool mEnableGuardState;
-    /* 0x05 */ bool mEnableGuardFlash;
+    /* 0x00 */ Hero &mHero;
+    /* 0x04 */ bool mIsGuard;
+    /* 0x05 */ bool mIsFlash;
     /* 0x08 */ u32 mAnimFrame;
 };
 
