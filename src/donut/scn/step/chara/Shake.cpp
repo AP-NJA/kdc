@@ -86,6 +86,7 @@ void Shake::update()
     }
 }
 
+// https://decomp.me/scratch/bhMUZ
 Vector2 Shake::getOffset() const
 {
     if (mKind == ShakeKind_Invalid)
@@ -95,7 +96,7 @@ Vector2 Shake::getOffset() const
     
     const ::TableEntry* tbl = &::T_TABLE[mKind];
     
-    Vector2 offset(0.0f, 0.0f);
+    Vector2 offset(0.0f, 0.0f); // This is PROBABLY just Vector2() but inlined
     offset.y = 0.0f;
     offset.x = tbl->offsTable[mFrame << 1];
     if (mFrame >= 1)
