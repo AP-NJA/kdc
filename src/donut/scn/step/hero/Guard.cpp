@@ -28,27 +28,27 @@ namespace {
 }
 
 Guard::Guard(Hero &hero)
-    : mHero(&hero)
+    : mHero(hero)
 {
-    mEnableGuardState = false;
-    mEnableGuardFlash = false;
+    mIsGuard = false;
+    mIsFlash = false;
     mAnimFrame = 0;
 }
 
+Guard::~Guard() { }
+
 void Guard::update()
 {
-    if (mEnableGuardState != false)
+    if (mIsGuard)
     {
-        u32 guardFlashCycle = mAnimFrame + 1;
-        mAnimFrame = guardFlashCycle;
-
-        if (guardFlashCycle >= 20)
+        mAnimFrame++;
+        if (mAnimFrame >= 20)
         {
             mAnimFrame = 12;
         }
     }
 
-    mEnableGuardFlash = mEnableGuardState;
+    mIsFlash = mIsGuard;
 }
 
 void Guard::resetAnimFrame()
@@ -58,14 +58,14 @@ void Guard::resetAnimFrame()
 
 void Guard::setGuard(bool flag)
 {
-    mEnableGuardState = flag;
+    mIsGuard = flag;
 
-    if (mEnableGuardFlash)
+    if (mIsFlash)
     {
         return;
     }
 
-    if (mEnableGuardState != true)
+    if (mIsGuard != true)
     {
         return;
     }
@@ -75,7 +75,7 @@ void Guard::setGuard(bool flag)
 
 bool Guard::isGuard() const
 {
-    return mEnableGuardState;
+    return mIsGuard;
 }
 
 #pragma peephole off
@@ -84,7 +84,7 @@ _GXColor Guard::getColor() const
     _GXColor color;
     u32 alpha = 0;
 
-    if (mEnableGuardState != false)
+    if (mIsGuard)
     {
         alpha = T_ALPHA_TABLE[mAnimFrame];
     }
