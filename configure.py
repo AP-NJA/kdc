@@ -972,8 +972,8 @@ config.libs = [
             Object(NonMatching, "donut/gobj/MoveParamFall.cpp", extra_cflags=["-O3,s"]),
             Object(NonMatching, "donut/gobj/NodeRepos.cpp", extra_cflags=["-O3,s"]),
             Object(NonMatching, "donut/gobj/Script.cpp", extra_cflags=["-O3,s"]),
-            Object(NonMatching, "donut/gobj/Target.cpp", extra_cflags=["-O3,s"]),
-            Object(NonMatching, "donut/gobj/TargetDesc.cpp", extra_cflags=["-O3,s"]),
+            Object(Equivalent, "donut/gobj/Target.cpp", extra_cflags=["-O3,s"]),
+            Object(Equivalent, "donut/gobj/TargetDesc.cpp", extra_cflags=["-O3,s"]),
         ],
     },
     {
