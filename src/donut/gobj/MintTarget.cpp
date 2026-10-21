@@ -21,12 +21,12 @@ static PointerWrapper<Target> t_obj = PointerWrapper<Target>();
 
 } // unnamed
 
-void MintTarget::Register(Target& move)
+void MintTarget::Register(Target& obj)
 {
-    t_obj.set(move);
+    t_obj.set(obj);
 }
 
-void MintTarget::Unregister(Target& move)
+void MintTarget::Unregister(Target& obj)
 {
     t_obj.unset();
 }
