@@ -14,16 +14,47 @@ public:
         mPointer = nullptr;
     }
 
-    inline void operator=(const T* pOther) {
-        mPointer = (T*)pOther;
+    inline void set(T& ptr) {
+        mPointer = &ptr;
     }
 
-    inline bool operator!=(const T* pOther) {
-        return mPointer != pOther;
+    //NOTE: Merged into nw4r::g3d::LightObj::LightObj()
+    void unset() {
+        mPointer = nullptr;
+    }
+
+    inline T& getRef() {
+        return *mPointer;
     }
 
     inline T* getPtr() {
         return mPointer;
+    }
+
+    bool wasSet() const {
+        return mPointer != nullptr;
+    }
+
+    bool isEmpty() const {
+        return mPointer == nullptr;
+    }
+    
+    void operator=(const PointerWrapper<T>& pOther) {
+        mPointer = pOther.mPointer;
+    }
+
+    bool operator!=(const PointerWrapper<T>& pOther) {
+        return mPointer != pOther.mPointer;
+    }
+
+    inline T* operator->()
+    {
+        return getPtr();
+    }
+
+    inline T& operator*()
+    {
+        return getRef();
     }
 
 private:
