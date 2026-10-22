@@ -9,9 +9,9 @@ namespace {
 
     mem::IAllocator* t_allocatorRef() {
         mem::Memory::SetupIfNotSetup();
-        if (t_globalNewDeleteAllocator != nullptr) {
+        if (t_globalNewDeleteAllocator.wasSet()) {
             return t_globalNewDeleteAllocator.getPtr();
-        } else if (t_allocator != nullptr) {
+        } else if (t_allocator.wasSet()) {
             return t_allocator.getPtr();
         }
         return &mem::Memory::Instance->mem1FixHeap();
@@ -47,15 +47,15 @@ void operator delete(void* pData) {
 namespace mem {
     namespace OperatorNewDelete {
         void SetDefaultAllocator(IAllocator &rAllocator) {
-            t_allocator = &rAllocator;
+            t_allocator.set(rAllocator);
         }
 
         void SetGlobalNewDeleteAllocator(IAllocator &rAllocator) {
-            t_globalNewDeleteAllocator = &rAllocator;
+            t_globalNewDeleteAllocator.set(rAllocator);
         }
 
         void UnsetGlobalNewDeleteAllocator(IAllocator &rAllocator) {
-            t_globalNewDeleteAllocator = nullptr;
+            t_globalNewDeleteAllocator.unset();
         }
     }
 }
