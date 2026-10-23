@@ -25,20 +25,20 @@ public:
     void clearMighty();
     void clear();
     bool getFlashOp() const;
-    u32 getInvincibleFrame();
+    u32 getInvincibleFrame() const;
     void setBodyCollStateNormalIfNotMighty();
     void requestMightyEffect();
     void releaseMightyEffect();
 private:
     /* 0x00 */ Hero *mHero;
     /* 0x04 */ chara::Invincible mInvincible;
-    /* 0x10 */ bool mEnableIntangibleFlash;
-    /* 0x11 */ bool mCandyMightyEffect;
-    /* 0x12 */ bool mCandySparkleEffect;
-    /* 0x14 */ u32 mCandyTimer;
-    /* 0x18 */ u32 mEndRainbowTimer;
-    /* 0x1C */ u32 mRainbowCycle;
-    /* 0x20 */ _GXColor mRGB;
+    /* 0x10 */ bool mUnk10; // intangible flash
+    /* 0x11 */ bool mUnk11; // candy mighty effect
+    /* 0x12 */ bool mUnk12; // candy sparkling effect
+    /* 0x14 */ u32 mUnk14; // candy timer
+    /* 0x18 */ u32 mUnk18; // candy end timer
+    /* 0x1C */ u32 mUnk1C; // rainbow cycle
+    /* 0x20 */ _GXColor mRGB; 
     /* 0x24 */ bool mUnk24;
 };
 

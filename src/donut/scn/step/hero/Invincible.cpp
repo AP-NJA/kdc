@@ -6,12 +6,12 @@ using namespace scn::step::hero;
 Invincible::Invincible(Hero &rHero)
     : mHero(&rHero)
 {
-    mEnableIntangibleFlash = false;
-    mCandyMightyEffect = false;
-    mCandySparkleEffect = false;
-    mCandyTimer = 0;
-    mEndRainbowTimer = 0;
-    mRainbowCycle = 0;
+    mUnk10 = false;
+    mUnk11 = false;
+    mUnk12 = false;
+    mUnk14 = 0;
+    mUnk18 = 0;
+    mUnk1C = 0;
     mUnk24 = false;
 }
 
@@ -83,12 +83,38 @@ void Invincible::clear()
 	mInvincible.clear();
 	setBodyCollStateNormalIfNotMighty();
 
-	mEnableIntangibleFlash = false;
+	mUnk10 = false;
 	mUnk24 = false;
 }
 
 bool Invincible::getFlashOp() const
 {	
-	
+	if ((mUnk11) || (mUnk18 != 0))
+	{
+		return true;
+	}
+
+	return false;
 }
+
+u32 Invincible::getInvincibleFrame() const
+{
+	return mInvincible.mInvincibleFrames;
+}
+
+// https://decomp.me/scratch/3coV7
+void Invincible::setBodyCollStateNormalIfNotMighty()
+{		
+}
+
+// https://decomp.me/scratch/ZLpC5
+void Invincible::requestMightyEffect()
+{
+}
+
+// https://decomp.me/scratch/pvA7m
+void Invincible::releaseMightyEffect()
+{
+}
+
 
